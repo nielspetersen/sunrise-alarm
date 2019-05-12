@@ -23,32 +23,18 @@ def white():
 
 def sunrise():
     pixels.fill((255, 0, 0))
-    #pixels.show()
+
     fill_step(255, 33, 0)
 
-    #time.sleep(5)
-    #pixels.fill((255, 77, 0))
-    #pixels.show()
     fill_step(255, 65, 0)
 
-    #time.sleep(5)
-    #pixels.fill((255, 103, 0))
-    #pixels.show()
     fill_step(255, 103, 0)
 
     fill_step(0, 0, 255)
 
     fill_step(0, 255, 0)
-    #pixels.fill((255, 129, 0))
-    #pixels.show()
-    #time.sleep(5)
 
     fill_step(255, 167, 0)
-    #pixels.fill((255, 167, 0))
-    #pixels.show()
-
-    #pixels.fill((255, 255, 255))
-    #pixels.show()
      
     white()
 
