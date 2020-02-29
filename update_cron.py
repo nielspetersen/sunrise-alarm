@@ -10,7 +10,7 @@ import logging
 logging.basicConfig()
 logging.getLogger().setLevel(logging.DEBUG)
 
-# Get áccess to Cron
+# Get access to Cron
 cron = CronTab(user='pi') 
 
 existing_job = cron.find_comment("sunrise_alarm") 

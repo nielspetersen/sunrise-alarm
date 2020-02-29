@@ -1,0 +1,28 @@
+<!doctype html> <html lang="de"> 
+<head> 
+	<meta charset="utf-8"/> 
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<title>Set sunrise alarm</title> 
+</head>
+<body>
+	<span style="font-weight:bold;">Please select your wake-up time:</span>
+	<form id="alarm" action="/alarm.php" method="post">
+		<input type="datetime-local" id="wakeup-time"
+		   name="wakeup-time"><br />
+		<button type="submit" name="set-alarm">Set alarm</button>
+   </form>
+   
+   <script type="text/javascript">
+		var date = new Date().toISOString();
+		var inputs = document.getElementById('alarm').elements;
+		var wakeuptimer = inputs["wakeup-time"];
+		wakeuptimer.min = date;
+		wakeuptimer.value = date;
+   </script>
+   <script type="text/css">
+		form {
+			margin: auto;
+			width: 100%;
+		}
+   </script>
+</body>
