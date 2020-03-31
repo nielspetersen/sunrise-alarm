@@ -1,0 +1,46 @@
+{
+    "alarms": {
+        "monday": {
+            "time_utc": "7:30",
+            "melody": "Default",
+            "advance_start": 15,
+            "active": true 
+        },
+        "tuesday": {
+            "time_utc": "7:30",
+            "melody": "Default",
+            "advance_start": 15,
+            "active": true
+        },
+        "wednesday": {
+            "time_utc": "7:30",
+            "melody": "Default",
+            "advance_start": 15,
+            "active": true
+        },
+        "thursday": {
+            "time_utc": "7:30",
+            "melody": "Default",
+            "advance_start": 15,
+            "active": true 
+        },
+        "friday": {
+            "time_utc": "7:30",
+            "melody": "Default",
+            "advance_start": 15,
+            "active": true 
+        },
+        "saturday": {
+            "time_utc": "7:30",
+            "melody": "Default",
+            "advance_start": 15,
+            "active": true 
+        },
+        "sunday": {
+            "time_utc": "7:30",
+            "melody": "Default",
+            "advance_start": 15,
+            "active": true
+        }
+    }
+}
