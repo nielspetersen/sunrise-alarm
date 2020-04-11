@@ -22,32 +22,39 @@ def white():
     pixels.show()
 
 def sunrise():
+    # Start with red
     pixels.fill((255, 0, 0))
 
-    fill_step(255, 33, 0)
+    # light-red
+    fill_step(255, 10, 0)
 
-    fill_step(255, 65, 0)
+    # orange-red
+    fill_step(255,69,0)
 
-    fill_step(255, 103, 0)
+    #orange
+    fill_step(255, 165, 0)
 
-    fill_step(0, 0, 255)
+    #gold
+    fill_step(255, 215, 0)
 
-    fill_step(0, 255, 0)
+    #yellow
+    fill_step(255, 255, 0)
 
-    fill_step(255, 167, 0)
+    # light-yellow
+    fill_step(255, 255, 224)
      
     white()
 
-def fill_step(green, red, blue):
+def fill_step(red, green, blue):
     # even indices
     for i in range(0, num_pixels, 2):
-        pixels[i] = (green, red, blue)
+        pixels[i] = (red, green, blue)
         pixels.show()
         time.sleep(2)
    
     #odd indices
     for index in range(1, num_pixels, 2):
-        pixels[index] = (green, red, blue)
+        pixels[index] = (red, green, blue)
         pixels.show()
         time.sleep(2)
 
