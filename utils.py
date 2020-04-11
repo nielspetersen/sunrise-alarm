@@ -35,7 +35,7 @@ def sunrise():
     fill_step(255, 165, 0)
 
     #gold
-    fill_step(255, 215, 0)
+    fill_step(255, 200, 0)
 
     #yellow
     fill_step(255, 255, 0)
@@ -44,6 +44,34 @@ def sunrise():
     fill_step(255, 255, 224)
      
     white()
+
+def sunset():
+    # Start with white
+    white()
+    
+    # light-yellow
+    fill_step(255, 255, 224)
+    
+    #yellow
+    fill_step(255, 255, 0)
+
+    #gold
+    fill_step(255, 200, 0)
+    
+    #orange
+    fill_step(255, 165, 0)
+
+    # orange-red
+    fill_step(255,69,0)
+
+    # light-red
+    fill_step(255, 10, 0)
+
+    # red
+    pixels.fill((255, 0, 0))
+
+    # switch-off leds
+    pixels.fill((0,0,0))
 
 def fill_step(red, green, blue):
     # even indices
@@ -60,3 +88,5 @@ def fill_step(red, green, blue):
 
 while True:
     sunrise()
+    sunset()
+    break
