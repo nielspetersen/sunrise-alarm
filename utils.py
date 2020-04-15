@@ -20,8 +20,15 @@ class LEDRing:
             self.pixels = neopixel.NeoPixel(pixel_pin, num_leds, brightness=0.5, auto_write=False, pixel_order=pixel_order)
             LEDRing.__instance = self
 
-    def white(self):
+    # Switch all LEDs to white color
+    def white(self, brightness=0.5):
+        self.pixels.brightness = brightness
         self.pixels.fill((255, 255, 255))
+        self.pixels.show()
+
+    # Switch off all LEDs 
+    def black(self):
+        self.pixels.fill((0, 0, 0))
         self.pixels.show()
 
     def sunrise(self, advance_time=0):
@@ -76,18 +83,14 @@ class LEDRing:
         self.pixels.fill((255, 0, 0)) # red
         self.pixels.show()
 
-        self.pixels.fill((0,0,0)) # switch-off leds
-        self.pixels.show()
+        self.black() # switch-off leds
 
     # Switch dimmed white light on, if led is off. 
     def nightlight(self):
-        self.pixels.brightness = 0.2
         if self.switched_off():
-            self.pixels.fill((255, 255, 255))
-            self.pixels.show()
+            self.white(brightness=0.2)
         else:
-            self.pixels.fill((0,0,0))
-            self.pixels.show()
+            self.black()
 
     def fill_step(self, red, green, blue, sleep_time=0):
         # even indices
