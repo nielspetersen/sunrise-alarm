@@ -12,7 +12,7 @@ class LEDRing:
             LEDRing()
         return LEDRing.__instance
 
-    def __init__(self, pixel_pin=board.D18, num_leds=24, pixel_order=neopixel.GRB):
+    def __init__(self, pixel_pin=board.D18, num_leds=24, pixel_order=neopixel.GRB, brightness=0.7):
         """ Virtually private constructor """
         if LEDRing.__instance != None:
             raise Exception("Only one LEDRing instance supported")
@@ -20,7 +20,7 @@ class LEDRing:
             self.num_pixels = num_leds
             self.pixel_pin = pixel_pin
             self.pixel_order = pixel_order
-            self.pixels = neopixel.NeoPixel(pixel_pin, num_leds, brightness=0.5, auto_write=False, pixel_order=pixel_order)
+            self.pixels = neopixel.NeoPixel(pixel_pin, num_leds, brightness=brightness, auto_write=False, pixel_order=pixel_order)
             LEDRing.__instance = self
 
     # Switch all LEDs to white color
