@@ -61,7 +61,7 @@ class LEDRing:
         # light-yellow
         self.fill_step(255, 255, 224, sleep_time)
         
-        white()
+        self.white()
 
     def sunset(self, advance_time=0):
         
@@ -123,4 +123,3 @@ class LEDRing:
             sleeptime = advance_start_sec // num_steps
         return sleeptime        
 
-    
