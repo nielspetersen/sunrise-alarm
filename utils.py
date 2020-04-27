@@ -73,6 +73,7 @@ class LEDRing:
             mixer.music.set_volume(0.9)
             mixer.music.play()
 
+    def sunset(self, advance_time=30):
         
         sleep_time = self.__calc_sleeptime(advance_start_min=advance_time)
         # Set brightness to default value
