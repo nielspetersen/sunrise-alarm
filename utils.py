@@ -2,9 +2,11 @@
 import time
 import board
 import neopixel
+from pygame import mixer
 
 class LEDRing:
     __instance = None
+    sound_support = False
 
     @staticmethod
     def getInstance():
@@ -12,7 +14,7 @@ class LEDRing:
             LEDRing()
         return LEDRing.__instance
 
-    def __init__(self, pixel_pin=board.D18, num_leds=24, pixel_order=neopixel.GRB, brightness=0.7):
+    def __init__(self, pixel_pin=board.D18, num_leds=24, pixel_order=neopixel.GRB, brightness=0.7, sound_support=False):
         """ Virtually private constructor """
         if LEDRing.__instance != None:
             raise Exception("Only one LEDRing instance supported")
@@ -22,6 +24,9 @@ class LEDRing:
             self.pixel_order = pixel_order
             self.pixels = neopixel.NeoPixel(pixel_pin, num_leds, brightness=brightness, auto_write=False, pixel_order=pixel_order)
             LEDRing.__instance = self
+            if sound_support:
+                self.sound_support = True
+                mixer.init()
 
     # Switch all LEDs to white color
     def white(self, brightness=0.5):
@@ -63,7 +68,11 @@ class LEDRing:
         
         self.white()
 
-    def sunset(self, advance_time=0):
+        if self.sound_support:
+            mixer.music.load('Afrojack - Take Over Control.mp3')
+            mixer.music.set_volume(0.9)
+            mixer.music.play()
+
         
         sleep_time = self.__calc_sleeptime(advance_start_min=advance_time)
         # Set brightness to default value
