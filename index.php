@@ -16,8 +16,9 @@
 			$json_content = json_decode($content, true);
 		?>
 		<div id="alarms">
-			<form id="addAlarm" action="alarm.php" method="post">
-				<button type="submit" name="set-alarm">Save alarms</button>	
+			<form id="addAlarm" action="" method="post">
+				<span id="message"></span>
+				<button type="submit" id="submit">Save alarms</button>	
 				<table id="alarm-table">
 					<th>Day</th>
 					<th>Status</th>
@@ -42,4 +43,6 @@
 			</form>
 		</div>
 	</div>
+	<script type="text/javascript" src="assets/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript" src="assets/main.js"></script>
 </body>
