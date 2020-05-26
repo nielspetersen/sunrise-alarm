@@ -8,6 +8,10 @@
 <body>
 	<div class="content">
 		<h1>Sunrise Alarm</h1>
+		<?php
+			$current_time = new DateTime();
+			echo '<p>(', $current_time->format('l, d-m-Y H:i'), ')</p>';
+		?>
 		<h3>Upcomping alarms</h3>
 		<span style="font-weight:bold;">Please set your wake-up time:</span>
 
