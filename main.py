@@ -19,7 +19,7 @@ def main():
         if len(sys.argv) >= 3:
             advance = int(sys.argv[2])
 
-    controller = alarm.Alarm(sound_support=True)
+    controller = alarm.Alarm(sound_support=False)
 
     if action == '--sunrise':
         controller.sunrise(advance_time=advance)
