@@ -22,13 +22,13 @@ cron.remove_all()
 
 with open('/var/www/html/data/alarms.json','r') as jsonfile:
     data = json.load(jsonfile)
-    for alarm in data['alarms'].keys:
+    for day, alarm in data['alarms'].items():
         # only consider days with active alarms
-        if alarms[alarm]['active'] == true:
-            job = cron.new(command='sudo python main.py', comment='sunrise_alarm')
+        if alarm['active'] == true:
+            advance = alarm['advance_start']
+            job = cron.new(command='sudo python main.py --sunrise {}'.format(advance), comment='sunrise_alarm')
             
-            day = alarm
-            time = alarms[alarm]['time_utc']
+            time = alarm['time_utc']
             timing = utils.convertAlarmTimingToCron(day, time)
             job.setall(timing)
 
