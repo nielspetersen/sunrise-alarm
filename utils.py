@@ -12,4 +12,4 @@ days = {
 def convertAlarmTimingToCron(day, time):
     hour, minute = time.split(':')
 
-    return '{hour} {minute} * * {day}'.format(hour=hour, minute=minute, day=days[day])
+    return '{minute} {hour} * * {day}'.format(hour=hour, minute=minute, day=days[day])
