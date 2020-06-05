@@ -24,12 +24,12 @@ with open('/var/www/html/data/alarms.json','r') as jsonfile:
     data = json.load(jsonfile)
     for day, alarm in data['alarms'].items():
         # only consider days with active alarms
-        if alarm['active'] == true:
+        if alarm['active'] == True:
             advance = alarm['advance_start']
             job = cron.new(command='sudo python main.py --sunrise {}'.format(advance), comment='sunrise_alarm')
             
             time = alarm['time_utc']
-            timing = utils.convertAlarmTimingToCron(day, time)
+            timing = utils.convertAlarmTimingToCron(day, time, advance)
             job.setall(timing)
 
 cron.write()
