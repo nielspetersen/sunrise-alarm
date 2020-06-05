@@ -1,5 +1,5 @@
 <?php
-$days = ['monday', 'tuesday', 'wednesdays', 'thursday', 'friday', 'saturday', 'sunday'];
+$days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
 $alarms = ["alarms" => []];
 
