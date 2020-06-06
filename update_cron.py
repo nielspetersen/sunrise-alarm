@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from crontab import CronTab
 import os
 import board
@@ -25,7 +27,7 @@ with open('/var/www/html/data/alarms.json','r') as jsonfile:
     for day, alarm in data['alarms'].items():
         # only consider days with active alarms
         if alarm['active'] == True:
-            advance = alarm['advance_start']
+            advance = int(alarm['advance_start'])
             job = cron.new(command='sudo python main.py --sunrise {}'.format(advance), comment='sunrise_alarm')
             
             time = alarm['time_utc']
