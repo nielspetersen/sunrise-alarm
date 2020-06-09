@@ -7,6 +7,8 @@
   - Adafruit NeoPixel Ring 24 with Leds
   - Adafruit CharacterLCD
 
+![Wiring layout](Wiring_layout.png)
+
 ## Raspbian configuration
 
   Download Raspbian image e.g. Version 9 Stretch and burn image to SD card. 
@@ -117,7 +119,7 @@ PHP scripts and further frontend related resources to /var/www/html, respectivel
 
 **15. Change file owner for alarm_time storage file
 sudo chown www-data:incron alarm_time.txt**
-    
+
 **16. Define incron for listing on alarm_time.txt file
 Open session with user of desire and execute the following commands:**
 
@@ -128,6 +130,10 @@ incrontab -e
 # Add to file
 /var/www/html/data/alarms.json IN_MODIFY /home/pi/update_cron.py
 ```
+
+**16. Ensure proper CHMOD settings for cron update script**
+`-rwxr-xr-x`
+
 
 **17. Add pygame mixer libary for playing sounds**
 
