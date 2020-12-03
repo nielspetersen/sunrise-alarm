@@ -6,6 +6,21 @@ Main script for triggering sunset / sunrise features
 import warnings
 import alarm
 import sys
+import digitalio
+import board
+import RPi.GPIO as GPIO
+
+button1 = None
+controller = alarm.Alarm(sound_support=False)
+
+def initializeButton():
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(12, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    GPIO.add_event_detect(12, GPIO.RISING, callback=stopSunrise, bouncetime=250)
+
+def stopSunrise(channel):
+    controller.black()
+    exit(0)
 
 def main():
     #default action if not provided
@@ -19,7 +34,8 @@ def main():
         if len(sys.argv) >= 3:
             advance = int(sys.argv[2])
 
-    controller = alarm.Alarm(sound_support=False)
+    # controller = alarm.Alarm(sound_support=False)
+    initializeButton()
 
     if action == '--sunrise':
         controller.sunrise(advance_time=advance)
