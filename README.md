@@ -16,7 +16,7 @@
   Now you can boot the Raspberry Pi. Please adjust the localization / time zone on the after booting the fresh installation:
   
   ```sh
-  sudo raspi-config
+  $ sudo raspi-config
   
   # And use the following settings 
   Select 4 / "Localisation Options" 
@@ -30,15 +30,15 @@
 
 **1. Update / Upgrade Raspbian**
 
-`sudo apt-get update`
+`$ sudo apt-get update`
 
 or
 
-`sudo apt-get upgrade`
+`$ sudo apt-get upgrade`
 
 **2. Install Python 3**
 
-`sudo apt-get install python3-pip`
+`$ sudo apt-get install python3-pip`
   
 **3. Enable I2C** 
 
@@ -50,15 +50,15 @@ Check: https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/con
 
 **5. Verifiy I2C and SPI devices via**
 
-`ls /dev/i2c* /dev/spi*`
+`$ ls /dev/i2c* /dev/spi*`
   
 **6. Install Raspberry Pi library GPIO**
 
-`pip3 install RPI.GPIO`
+`$ pip3 install RPI.GPIO`
   
 **7. Install blinka library for supporting different python api**
 
-`pip3 install adafruit-blinka`
+`$ pip3 install adafruit-blinka`
   
 **8. Verify blinka installation with new file:**
 
@@ -94,11 +94,11 @@ print("done!")
 
 **10. Install Apache web server**
 
-`sudo apt install apache2 -y`
+`$ sudo apt install apache2 -y`
 
 **11. Install PHP 7.x**
 
-` sudo apt install php libapache2-mod-php -y`
+`$ sudo apt install php libapache2-mod-php -y`
 
 **12. Copy source files to Raspberry Pi**
 
@@ -111,11 +111,11 @@ PHP scripts and further frontend related resources to /var/www/html, respectivel
 
 **13. Verify that crontab is installed (also for python)**
 
-`sudo pip3 install python-crontab`
+`$ sudo pip3 install python-crontab`
 
 **14. Install incron for updating cronjob for triggering python script after changing alarm time**
 
-`sudo apt-get install incron`
+`$ sudo apt-get install incron`
 
 **15. Change file owner for alarm_time storage file
 sudo chown www-data:incron alarm_time.txt**
@@ -124,8 +124,8 @@ sudo chown www-data:incron alarm_time.txt**
 Open session with user of desire and execute the following commands:**
 
 ```sh
-cd ~
-incrontab -e
+$ cd ~
+$ incrontab -e
 
 # Add to file
 /var/www/html/data/alarms.json IN_MODIFY /home/pi/update_cron.py
@@ -138,7 +138,24 @@ incrontab -e
 **17. Add pygame mixer libary for playing sounds**
 
 ```
-sudo pip3 install pygame
+$ sudo pip3 install pygame
 # restart after sucessfull installation
-sudo shutdown -r 0
+$ sudo shutdown -r 0
 ```
+
+
+**18. Add (background) service for controlling buttons**
+
+Move service definition to systemd folder
+
+```
+$ sudo mv button_control.service /etc/sytemd/system
+```
+
+Start background service and enable on boot.
+```
+$ sudo systemctl start button_control.service
+$ sudo systemctl enable button_control.service
+```
+
+1. https://www.raspberrypi.org/documentation/linux/usage/systemd.md

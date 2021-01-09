@@ -1,0 +1,14 @@
+[Unit]
+Description=Button Control
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 -u button_control.py
+WorkingDirectory=/home/pi/
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
